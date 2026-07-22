@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ */
+/*  Design tokens — "Build Log / Blueprint"                            */
+/*  Source of truth mirrored from src/data/site.ts theme.              */
+/* ------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #0f1115; /* warm near-black background */
+  --surface: #171a21; /* raised cards */
+  --line: #2a2e37; /* hairlines, blueprint grid */
+  --paper: #eceae3; /* primary text, warm off-white */
+  --muted: #8a8f98; /* secondary text */
+  --accent: #f5a524; /* signal amber — CTAs / active state */
+  --blueprint: #5b7db1; /* cool annotation blue for mono metadata */
+  --repsay: #dbf756; /* used ONLY on the RepSay featured card */
 }
 
+/* Expose tokens + fonts to Tailwind v4 utilities (bg-ink, text-paper, …) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-paper: var(--paper);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-blueprint: var(--blueprint);
+  --color-repsay: var(--repsay);
+
+  --font-display: var(--font-clash), "Clash Display", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "JetBrains Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Lenis controls scroll; disable native smooth to avoid double-easing */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Blueprint grid utility — a faint engineering-paper backdrop */
+.bg-blueprint-grid {
+  background-image: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--line) 55%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--line) 55%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+}
+
+/* Selection */
+::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  color: var(--paper);
+}
+
+/* Focus ring — visible keyboard focus everywhere */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Thin scrollbar to match the palette */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reduced motion — instant, static content                          */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code local config & internal build-spec docs (not part of the app)
+.claude/
+CLAUDE.md
+WHAT_CLAUDE_WILL_DO.md
+KICKOFF_PROMPT.md
