@@ -30,6 +30,15 @@ export const certificates: Certificate[] = [
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/0816FXJMVVJP",
   },
+  {
+    title: "Prepare Data for Exploration",
+    issuer: "Coursera",
+    provider: "Google",
+    group: "Google Data Analytics Professional Certificate",
+    inProgress: true,
+    credentialUrl:
+      "https://www.coursera.org/account/accomplishments/verify/LMYF0QJZJQN2",
+  },
 
   // --- Standalone certificates ---
   {
