@@ -32,7 +32,7 @@ export default function Contact() {
         <Reveal>
           <SectionHeading
             eyebrow="contact"
-            title="Let's build something"
+            title="Connect with me"
             intro={contact.availability}
           />
         </Reveal>
