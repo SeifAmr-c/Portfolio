@@ -40,8 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Claude Code local config & internal build-spec docs (not part of the app)
+# Claude Code local config & internal notes (not part of the app)
 .claude/
 CLAUDE.md
-WHAT_CLAUDE_WILL_DO.md
-KICKOFF_PROMPT.md
