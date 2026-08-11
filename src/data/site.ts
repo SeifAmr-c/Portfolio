@@ -5,7 +5,7 @@ export const site = {
     title: "Seif Amr Attia — Data Analyst & Engineer",
     description:
       "Data analyst and full-stack engineer. Turning data into decisions — time-series ML, voice-first apps, and B2B marketplaces.",
-    url: "TODO_DEPLOYED_URL", // e.g. https://seif.dev — fill after first deploy
+    url: "https://portfolio-lac-nine-52.vercel.app", // update if a custom domain is added
   },
 
   nav: [
