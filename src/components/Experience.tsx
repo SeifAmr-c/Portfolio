@@ -41,9 +41,14 @@ function TimelineEntry({
       const ol = listRef.current;
       const li = liRef.current;
       if (!ol || !li) return;
-      const total = ol.scrollHeight - 4; // spine is inset 2px top & bottom
-      const nodeCenter = li.offsetTop + 8 - 2; // node sits ~8px below the li top
-      const f = Math.min(1, Math.max(0, nodeCenter / total));
+      // The spine is `top-2 bottom-2` — inset 8px at each end — and each node's
+      // center sits 12px below its <li> top (top-1.5 = 6px, plus half of h-3).
+      const SPINE_INSET = 8;
+      const NODE_CENTER_OFFSET = 12;
+      const spineLength = ol.scrollHeight - SPINE_INSET * 2;
+      if (spineLength <= 0) return;
+      const nodeCenter = li.offsetTop + NODE_CENTER_OFFSET - SPINE_INSET;
+      const f = Math.min(1, Math.max(0, nodeCenter / spineLength));
       const start = Math.max(0, f - 0.05);
       setRange([start, Math.max(start + 0.001, f)]);
     };

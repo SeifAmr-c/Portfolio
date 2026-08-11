@@ -62,6 +62,10 @@ function useTypewriter(lines: string[], enabled: boolean) {
 export default function Hero() {
   const reduced = useReducedMotion();
   const typed = useTypewriter(profile.shipping, !reduced);
+  // `reduced` only resolves on the client, after the typewriter's initial state
+  // is already fixed at "" — so pick the static line at render time instead of
+  // leaving reduced-motion visitors with an empty build-log line.
+  const shippingLine = reduced ? profile.shipping[0] : typed;
   const gridRef = useRef<HTMLDivElement>(null);
 
   // Cursor-reactive spotlight over the blueprint grid.
@@ -90,7 +94,6 @@ export default function Hero() {
             "radial-gradient(420px circle at var(--mx, 30%) var(--my, 40%), #000 0%, rgba(0,0,0,0.35) 45%, transparent 80%)",
           WebkitMaskImage:
             "radial-gradient(420px circle at var(--mx, 30%) var(--my, 40%), #000 0%, rgba(0,0,0,0.35) 45%, transparent 80%)",
-          transition: "mask-position 0.1s linear",
         }}
       />
       {/* Faint always-on grid so the backdrop reads even without a cursor */}
@@ -140,7 +143,7 @@ export default function Hero() {
             ▸
           </span>
           <span className="text-paper">
-            {typed}
+            {shippingLine}
             {!reduced && (
               <span className="ml-0.5 inline-block w-[1px] animate-pulse bg-accent align-middle text-accent">
                 &nbsp;

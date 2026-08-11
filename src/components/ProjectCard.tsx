@@ -39,6 +39,15 @@ export default function ProjectCard({ project }: { project: Project }) {
   const reduced = useReducedMotion();
 
   const ref = useRef<HTMLElement>(null);
+  // Touch devices fire synthetic mouse events on tap but no reliable
+  // mouseleave, which can leave a card stuck mid-tilt. Checked lazily in the
+  // handler (browser-only) so nothing about the rendered markup changes.
+  const hoverQuery = useRef<MediaQueryList | null>(null);
+  function canHover() {
+    hoverQuery.current ??= window.matchMedia("(hover: hover)");
+    return hoverQuery.current.matches;
+  }
+
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
   const rx = useSpring(useTransform(my, [0, 1], [6, -6]), {
@@ -60,7 +69,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   );
 
   function onMove(e: React.MouseEvent<HTMLElement>) {
-    if (reduced || !ref.current) return;
+    if (reduced || !ref.current || !canHover()) return;
     const rect = ref.current.getBoundingClientRect();
     mx.set((e.clientX - rect.left) / rect.width);
     my.set((e.clientY - rect.top) / rect.height);
