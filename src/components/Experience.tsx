@@ -65,11 +65,15 @@ function TimelineEntry({
       viewport={viewportOnce}
       className="relative pb-12 last:pb-0"
     >
-      {/* Node — fills amber as the drawn spine reaches it */}
+      {/* Node — fills amber as the drawn spine reaches it.
+          Centered on the spine: the li's content box starts at the <ol>'s
+          padding (32px / sm 40px) and the spine's center is at 8.5px / 12.5px
+          from the <ol>'s left edge, so -23.5px / -27.5px + a half-width shift
+          lands the dot dead on the line. */}
       <motion.span
         aria-hidden="true"
         style={{ backgroundColor: nodeColor, borderColor: nodeColor }}
-        className="absolute left-[-1.6rem] top-1.5 h-3 w-3 rounded-full border-2 sm:left-[-1.85rem]"
+        className="absolute left-[-23.5px] top-1.5 h-3 w-3 -translate-x-1/2 rounded-full border-2 sm:left-[-27.5px]"
       />
 
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
