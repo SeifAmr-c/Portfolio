@@ -56,6 +56,7 @@ export const experience: Experience[] = [
     location: "Remote",
     period: "Aug 2024",
     type: "work",
+    website: "https://www.cibeg.com/",
     summary:
       'One-month remote summer internship in CIB\'s "Emerging Talent for the Future Workplace" program.',
     highlights: [],
@@ -66,6 +67,7 @@ export const experience: Experience[] = [
     location: "University · Egypt",
     period: "Oct 2022 – Mar 2025",
     type: "leadership",
+    website: "https://roben.club/",
     highlights: [
       "Interviewed and evaluated 50+ candidates across recruitment cycles",
       "Represented the university at an ICT event; supported PR and marketing campaigns",
