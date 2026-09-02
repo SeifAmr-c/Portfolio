@@ -89,6 +89,7 @@ function TimelineEntry({
         <LogoMark
           src={entry.logo}
           name={entry.company}
+          tone={entry.logoTone}
           className={leadership ? "opacity-70" : undefined}
         />
 
@@ -109,7 +110,7 @@ function TimelineEntry({
                   href={entry.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/site inline-flex items-baseline gap-1.5 transition-colors hover:text-accent"
+                  className="group/site inline transition-colors hover:text-accent"
                 >
                   {entry.company}
                   <svg
@@ -120,7 +121,7 @@ function TimelineEntry({
                     stroke="currentColor"
                     strokeWidth="1.5"
                     aria-hidden="true"
-                    className="translate-y-px text-muted transition-all group-hover/site:translate-x-0.5 group-hover/site:text-accent"
+                    className="ml-1.5 inline-block translate-y-px text-muted transition-all group-hover/site:translate-x-0.5 group-hover/site:text-accent"
                   >
                     <path
                       d="M4 10L10 4M5 4h5v5"

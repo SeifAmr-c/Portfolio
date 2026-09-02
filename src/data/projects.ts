@@ -1,4 +1,5 @@
 import type { StaticImageData } from "next/image";
+import type { LogoTone } from "@/components/ui/LogoMark";
 import repsayLogo from "@/assets/logos/repsay.png";
 import takhleesLogo from "@/assets/logos/takhlees.png";
 
@@ -20,10 +21,11 @@ export interface Project {
   /** Product logo — omit and the card falls back to a monogram tile. */
   logo?: StaticImageData;
   /**
-   * Light plate behind dark marks. RepSay's mark is already bright, so it sits
-   * on the surface unplated; Takhlees' black container mark needs the plate.
+   * How the mark sits in its tile. RepSay's mark is already bright, so it sits
+   * on the surface unplated; Takhlees' black container mark takes the default
+   * light plate.
    */
-  logoPlate?: boolean;
+  logoTone?: LogoTone;
   links: ProjectLink[];
 }
 
@@ -39,7 +41,7 @@ export const projects: Project[] = [
     featured: true,
     accent: "var(--repsay)", // RepSay lime
     logo: repsayLogo,
-    logoPlate: false,
+    logoTone: "dark",
     links: [
       { label: "App Store", url: "https://apps.apple.com/eg/app/repsay/id6759207937" },
     ],

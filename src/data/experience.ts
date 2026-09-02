@@ -1,6 +1,9 @@
 import type { StaticImageData } from "next/image";
+import type { LogoTone } from "@/components/ui/LogoMark";
 import anmatLogo from "@/assets/logos/anmat.png";
+import cibLogo from "@/assets/logos/cib.png";
 import fengerLogo from "@/assets/logos/fenger.png";
+import robenLogo from "@/assets/logos/roben.png";
 
 export type ExperienceType = "work" | "leadership";
 
@@ -14,6 +17,8 @@ export interface Experience {
   highlights: string[];
   /** Company logo — omit and the timeline falls back to a monogram tile. */
   logo?: StaticImageData;
+  /** How the mark sits in its tile; defaults to a light plate. */
+  logoTone?: LogoTone;
   /** Company site; the company name becomes an external link when set. */
   website?: string;
 }
@@ -56,6 +61,8 @@ export const experience: Experience[] = [
     location: "Remote",
     period: "Aug 2024",
     type: "work",
+    logo: cibLogo,
+    logoTone: "bleed", // the CIB mark ships on its own brand blue
     website: "https://www.cibeg.com/",
     summary:
       'One-month remote summer internship in CIB\'s "Emerging Talent for the Future Workplace" program.',
@@ -67,6 +74,7 @@ export const experience: Experience[] = [
     location: "University · Egypt",
     period: "Oct 2022 – Mar 2025",
     type: "leadership",
+    logo: robenLogo,
     website: "https://roben.club/",
     highlights: [
       "Interviewed and evaluated 50+ candidates across recruitment cycles",

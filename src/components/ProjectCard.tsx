@@ -46,7 +46,7 @@ export default function ProjectCard({ project }: { project: Project }) {
     featured,
     accent,
     logo,
-    logoPlate,
+    logoTone,
     links,
   } = project;
   const realLinks = links.filter((l) => isRealUrl(l.url));
@@ -121,7 +121,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       {/* Header row */}
       <div className="relative flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
         <div className="flex min-w-0 items-center gap-3">
-          <LogoMark src={logo} name={name} plate={logoPlate ?? true} />
+          <LogoMark src={logo} name={name} tone={logoTone} />
           <div className="min-w-0">
             <h3
               className={cn(

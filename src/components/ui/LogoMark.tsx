@@ -1,17 +1,22 @@
 import Image, { type StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
 
+/**
+ * How a mark sits in its tile:
+ * - `light` — dark marks (ANMAT, Fenger, Takhlees, RobEn) on a paper plate.
+ * - `dark`  — already-bright marks (RepSay) on the surface, unplated.
+ * - `bleed` — marks that carry their own background (CIB's brand blue) fill
+ *             the tile edge to edge.
+ */
+export type LogoTone = "light" | "dark" | "bleed";
+
 export interface LogoMarkProps {
   /** Imported logo asset from `src/assets/logos`. */
   src?: StaticImageData;
   /** Company / product name — used for the alt text and the initial fallback. */
   name: string;
-  /**
-   * Dark marks (Fenger, Takhlees, ANMAT) need a light plate to read on ink;
-   * marks that are already bright (RepSay) sit on the surface unplated.
-   */
-  plate?: boolean;
-  /** Tailwind height class for the tile — defaults to the timeline size. */
+  tone?: LogoTone;
+  /** Extra classes for the tile. */
   className?: string;
 }
 
@@ -23,18 +28,22 @@ export interface LogoMarkProps {
 export default function LogoMark({
   src,
   name,
-  plate = true,
+  tone = "light",
   className,
 }: LogoMarkProps) {
+  const bleed = tone === "bleed";
+
   return (
     <span
       className={cn(
         "inline-flex h-10 flex-none items-center justify-center overflow-hidden rounded-lg border",
-        src
-          ? plate
-            ? "border-line/60 bg-paper px-2"
-            : "border-line bg-surface px-2"
-          : "w-10 border-line bg-surface font-mono text-sm text-muted",
+        !src
+          ? "w-10 border-line bg-surface font-mono text-sm text-muted"
+          : bleed
+            ? "border-line/60"
+            : tone === "dark"
+              ? "border-line bg-surface px-2"
+              : "border-line/60 bg-paper px-2",
         className
       )}
     >
@@ -42,7 +51,7 @@ export default function LogoMark({
         <Image
           src={src}
           alt={`${name} logo`}
-          className="h-6 w-auto object-contain"
+          className={bleed ? "h-full w-auto" : "h-6 w-auto object-contain"}
           sizes="120px"
         />
       ) : (
