@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import { site } from "@/data/site";
+import ThemeToggle from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 /**
@@ -88,44 +89,46 @@ export default function Nav() {
             })}
           </ul>
 
-          <div className="hidden md:block">
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+
             <a
               href={site.resumePath}
-              className="inline-flex items-center rounded-full border border-accent px-4 py-1.5 font-mono text-sm text-accent transition-colors hover:bg-accent hover:text-ink"
+              className="hidden items-center rounded-full border border-accent px-4 py-1.5 font-mono text-sm text-accent transition-colors hover:bg-accent hover:text-ink md:inline-flex"
             >
               Resume
             </a>
-          </div>
 
-          {/* Mobile toggle */}
-          <button
-            type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-line text-paper md:hidden"
-            aria-expanded={open}
-            aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span className="sr-only">Menu</span>
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              aria-hidden="true"
+            {/* Mobile menu toggle */}
+            <button
+              type="button"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-line text-paper md:hidden"
+              aria-expanded={open}
+              aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => setOpen((v) => !v)}
             >
-              {open ? (
-                <path d="M4 4l10 10M14 4L4 14" strokeLinecap="round" />
-              ) : (
-                <>
-                  <path d="M3 5h12" strokeLinecap="round" />
-                  <path d="M3 9h12" strokeLinecap="round" />
-                  <path d="M3 13h12" strokeLinecap="round" />
-                </>
-              )}
-            </svg>
-          </button>
+              <span className="sr-only">Menu</span>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                aria-hidden="true"
+              >
+                {open ? (
+                  <path d="M4 4l10 10M14 4L4 14" strokeLinecap="round" />
+                ) : (
+                  <>
+                    <path d="M3 5h12" strokeLinecap="round" />
+                    <path d="M3 9h12" strokeLinecap="round" />
+                    <path d="M3 13h12" strokeLinecap="round" />
+                  </>
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 /**
  * How a mark sits in its tile:
  * - `light` — dark marks (ANMAT, Fenger, Takhlees, RobEn) on a paper plate.
- * - `dark`  — already-bright marks (RepSay) on the surface, unplated.
+ * - `dark`  — already-bright marks (RepSay) on a dark plate.
  * - `bleed` — marks that carry their own background (CIB's brand blue) fill
  *             the tile edge to edge.
  */
@@ -42,8 +42,8 @@ export default function LogoMark({
           : bleed
             ? "border-line/60"
             : tone === "dark"
-              ? "border-line bg-surface px-2"
-              : "border-line/60 bg-paper px-2",
+              ? "border-line bg-tile-dark px-2"
+              : "border-line/60 bg-tile-light px-2",
         className
       )}
     >

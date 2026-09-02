@@ -71,9 +71,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      // The pre-paint script below stamps data-theme here before React
+      // hydrates; that attribute is expected to differ from the server HTML.
+      suppressHydrationWarning
       className={`${inter.variable} ${jetbrainsMono.variable} ${clashDisplay.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-ink text-paper">
+        {/* Applies the stored theme before first paint — no light/dark flash.
+            Key must match THEME_KEY in src/lib/theme.ts. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem('seif-theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}`,
+          }}
+        />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

@@ -13,10 +13,15 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import LogoMark from "@/components/ui/LogoMark";
 import { Reveal } from "@/components/ui/Reveal";
 import { slideInLeft, viewportOnce } from "@/lib/motion";
+import { useTheme } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
-const NODE_DARK = "#2A2E37"; // --line
-const NODE_LIVE = "#F5A524"; // --accent
+// framer interpolates between concrete colours, so the node palette can't be a
+// CSS var — mirror --line and --accent for both themes instead.
+const NODE_COLORS = {
+  dark: { off: "#2A2E37", live: "#F5A524" },
+  light: { off: "#D8D4CA", live: "#8F5A00" },
+} as const;
 
 /**
  * One timeline entry. Its node fills from a hollow dark dot to signal amber
@@ -59,7 +64,8 @@ function TimelineEntry({
     return () => window.removeEventListener("resize", measure);
   }, [listRef]);
 
-  const nodeColor = useTransform(progress, range, [NODE_DARK, NODE_LIVE], {
+  const palette = NODE_COLORS[useTheme()];
+  const nodeColor = useTransform(progress, range, [palette.off, palette.live], {
     clamp: true,
   });
 

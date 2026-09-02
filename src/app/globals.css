@@ -14,6 +14,33 @@
   --blueprint: #5b7db1; /* cool annotation blue for mono metadata */
   --repsay: #dbf756; /* used ONLY on the RepSay featured card */
   --takhlees: #ef8700; /* Takhlees "safety" orange — that project's card only */
+
+  /* Logo tiles keep a fixed value in both themes: the marks are trimmed
+     against these, so they must not follow --paper / --surface. */
+  --tile-light: #f2f0ea;
+  --tile-dark: #171a21;
+
+  color-scheme: dark;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Light theme — same palette, re-weighted for a paper background.    */
+/*  Only the colours that stop reading on light are changed: the hues  */
+/*  (amber, blueprint blue, RepSay lime, Takhlees orange) are kept,    */
+/*  darkened just enough to clear 4.5:1 on paper.                      */
+/* ------------------------------------------------------------------ */
+:root[data-theme="light"] {
+  --ink: #eceae3; /* the warm off-white becomes the page */
+  --surface: #ffffff; /* raised cards read lighter than the page */
+  --line: #d8d4ca;
+  --paper: #14161b; /* …and the near-black becomes the text */
+  --muted: #5c616b;
+  --accent: #8f5a00; /* deep amber — legible as text and under light text */
+  --blueprint: #3d5f91;
+  --repsay: #4f6300;
+  --takhlees: #b4460a;
+
+  color-scheme: light;
 }
 
 /* Expose tokens + fonts to Tailwind v4 utilities (bg-ink, text-paper, …) */
@@ -27,6 +54,8 @@
   --color-blueprint: var(--blueprint);
   --color-repsay: var(--repsay);
   --color-takhlees: var(--takhlees);
+  --color-tile-light: var(--tile-light);
+  --color-tile-dark: var(--tile-dark);
 
   --font-display: var(--font-clash), "Clash Display", ui-sans-serif, system-ui,
     sans-serif;
@@ -98,6 +127,37 @@ body {
 }
 .card-accent-dot {
   background-color: var(--card-accent);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Theme toggle bulb — lit in light mode, dim in dark mode.           */
+/*  Driven by CSS off :root[data-theme] so the icon is correct on the  */
+/*  first paint, before any JS runs.                                   */
+/* ------------------------------------------------------------------ */
+.bulb-glass {
+  fill: transparent;
+  transition: fill 0.25s ease;
+}
+.bulb-rays {
+  opacity: 0;
+  transform: scale(0.6);
+  transform-origin: 9px 8px;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+:root[data-theme="light"] .bulb-glass {
+  fill: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+:root[data-theme="light"] .bulb-rays {
+  opacity: 1;
+  transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .bulb-glass,
+  .bulb-rays {
+    transition: none;
+  }
 }
 
 /* Selection */
