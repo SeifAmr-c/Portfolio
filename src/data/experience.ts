@@ -1,3 +1,7 @@
+import type { StaticImageData } from "next/image";
+import anmatLogo from "@/assets/logos/anmat.png";
+import fengerLogo from "@/assets/logos/fenger.png";
+
 export type ExperienceType = "work" | "leadership";
 
 export interface Experience {
@@ -8,15 +12,34 @@ export interface Experience {
   type: ExperienceType;
   summary?: string;
   highlights: string[];
+  /** Company logo — omit and the timeline falls back to a monogram tile. */
+  logo?: StaticImageData;
+  /** Company site; the company name becomes an external link when set. */
+  website?: string;
 }
 
 export const experience: Experience[] = [
+  {
+    company: "ANMAT",
+    role: "Software Engineering Intern (On-Site)",
+    location: "Cairo, Egypt · Egypt branch",
+    period: "Sep 2026 – Present",
+    type: "work",
+    logo: anmatLogo,
+    website: "https://anmat.sa/",
+    summary:
+      "On-site software engineering internship at the Egypt branch of ANMAT, a Saudi-headquartered technology group.",
+    // TODO: add highlights once there's concrete work to describe.
+    highlights: [],
+  },
   {
     company: "Fenger Gruppe",
     role: "Software Engineering Intern (On-Site)",
     location: "Kemberg, Germany",
     period: "Sep 2025 – Oct 2025",
     type: "work",
+    logo: fengerLogo,
+    website: "https://www.fenger-gruppe.de/",
     summary:
       "Two-month on-site internship at a German mid-sized group in construction, raw materials, and logistics — contributing across operational and strategic functions.",
     highlights: [

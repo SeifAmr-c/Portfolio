@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import { experience, type Experience as ExperienceEntry } from "@/data/experience";
 import SectionHeading from "@/components/ui/SectionHeading";
+import LogoMark from "@/components/ui/LogoMark";
 import { Reveal } from "@/components/ui/Reveal";
 import { slideInLeft, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -42,9 +43,10 @@ function TimelineEntry({
       const li = liRef.current;
       if (!ol || !li) return;
       // The spine is `top-2 bottom-2` — inset 8px at each end — and each node's
-      // center sits 12px below its <li> top (top-1.5 = 6px, plus half of h-3).
+      // center sits 20px below its <li> top (top-3.5 = 14px, plus half of h-3),
+      // which lines it up with the middle of the 40px logo tile.
       const SPINE_INSET = 8;
-      const NODE_CENTER_OFFSET = 12;
+      const NODE_CENTER_OFFSET = 20;
       const spineLength = ol.scrollHeight - SPINE_INSET * 2;
       if (spineLength <= 0) return;
       const nodeCenter = li.offsetTop + NODE_CENTER_OFFSET - SPINE_INSET;
@@ -78,29 +80,74 @@ function TimelineEntry({
       <motion.span
         aria-hidden="true"
         style={{ backgroundColor: nodeColor, borderColor: nodeColor }}
-        className="absolute left-[-23.5px] top-1.5 h-3 w-3 -translate-x-1/2 rounded-full border-2 sm:left-[-27.5px]"
+        className="absolute left-[-23.5px] top-3.5 h-3 w-3 -translate-x-1/2 rounded-full border-2 sm:left-[-27.5px]"
       />
 
-      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <h3
-          className={cn(
-            "font-display font-semibold tracking-tight",
-            leadership ? "text-lg text-muted" : "text-xl text-paper sm:text-2xl"
-          )}
-        >
-          {entry.company}
-        </h3>
-        <span className="font-mono text-sm text-blueprint">{entry.period}</span>
-        {leadership ? (
-          <span className="rounded-full border border-line px-2 py-0.5 font-mono text-[0.65rem] uppercase tracking-wider text-muted">
-            Extra-curricular
-          </span>
-        ) : null}
+      {/* Logo, company and period share one wrapping row so the copy below
+          keeps the full column width on narrow screens. */}
+      <div className="flex flex-wrap items-start gap-x-3 gap-y-2">
+        <LogoMark
+          src={entry.logo}
+          name={entry.company}
+          className={leadership ? "opacity-70" : undefined}
+        />
+
+        {/* min-h-10 + centring keeps a one-line company name level with the
+            40px tile (and with the timeline node) while longer names grow down. */}
+        <div className="flex min-h-10 min-w-0 flex-1 flex-col justify-center">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <h3
+              className={cn(
+                "font-display font-semibold tracking-tight",
+                leadership
+                  ? "text-lg text-muted"
+                  : "text-xl text-paper sm:text-2xl"
+              )}
+            >
+              {entry.website ? (
+                <a
+                  href={entry.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/site inline-flex items-baseline gap-1.5 transition-colors hover:text-accent"
+                >
+                  {entry.company}
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    aria-hidden="true"
+                    className="translate-y-px text-muted transition-all group-hover/site:translate-x-0.5 group-hover/site:text-accent"
+                  >
+                    <path
+                      d="M4 10L10 4M5 4h5v5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
+              ) : (
+                entry.company
+              )}
+            </h3>
+            <span className="font-mono text-sm text-blueprint">
+              {entry.period}
+            </span>
+            {leadership ? (
+              <span className="rounded-full border border-line px-2 py-0.5 font-mono text-[0.65rem] uppercase tracking-wider text-muted">
+                Extra-curricular
+              </span>
+            ) : null}
+          </div>
+        </div>
       </div>
 
       <p
         className={cn(
-          "mt-1 font-mono text-sm",
+          "mt-2 font-mono text-sm",
           leadership ? "text-muted" : "text-paper/80"
         )}
       >

@@ -13,6 +13,7 @@
   --accent: #f5a524; /* signal amber — CTAs / active state */
   --blueprint: #5b7db1; /* cool annotation blue for mono metadata */
   --repsay: #dbf756; /* used ONLY on the RepSay featured card */
+  --takhlees: #ef8700; /* Takhlees "safety" orange — that project's card only */
 }
 
 /* Expose tokens + fonts to Tailwind v4 utilities (bg-ink, text-paper, …) */
@@ -25,6 +26,7 @@
   --color-accent: var(--accent);
   --color-blueprint: var(--blueprint);
   --color-repsay: var(--repsay);
+  --color-takhlees: var(--takhlees);
 
   --font-display: var(--font-clash), "Clash Display", ui-sans-serif, system-ui,
     sans-serif;
@@ -70,6 +72,32 @@ body {
       transparent 1px
     );
   background-size: 48px 48px;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Project cards — each card sets --card-accent to its brand colour   */
+/*  (RepSay lime, Takhlees orange, blueprint blue for the rest).       */
+/*  Unlayered, so these win over Tailwind's utilities layer.           */
+/* ------------------------------------------------------------------ */
+.card-accent-border {
+  border-color: color-mix(in srgb, var(--card-accent) 35%, transparent);
+}
+.card-accent-border:hover {
+  border-color: color-mix(in srgb, var(--card-accent) 70%, transparent);
+}
+.card-accent-text {
+  color: var(--card-accent);
+}
+.card-accent-chip {
+  border-color: color-mix(in srgb, var(--card-accent) 30%, transparent);
+  color: color-mix(in srgb, var(--card-accent) 88%, transparent);
+}
+.card-accent-badge {
+  border-color: color-mix(in srgb, var(--card-accent) 50%, transparent);
+  color: var(--card-accent);
+}
+.card-accent-dot {
+  background-color: var(--card-accent);
 }
 
 /* Selection */
