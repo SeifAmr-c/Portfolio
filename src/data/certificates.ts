@@ -66,6 +66,15 @@ export const certificates: Certificate[] = [
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/J67R2VUZQK8F",
   },
+  {
+    title: "Introduction to Data Analysis Using Python",
+    issuer: "Coursera",
+    provider: "Google",
+    group: "Google Data Analytics Professional Certificate",
+    inProgress: true,
+    credentialUrl:
+      "https://www.coursera.org/account/accomplishments/verify/Z3QRE87FZKIG",
+  },
 
   // --- Standalone certificates ---
   {
@@ -130,13 +139,6 @@ export const certificates: Certificate[] = [
     provider: "Duke University",
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/LTJFR2IOQLHU",
-  },
-  {
-    title: "Introduction to Data Analysis Using Python",
-    issuer: "Coursera",
-    provider: "Google",
-    credentialUrl:
-      "https://www.coursera.org/account/accomplishments/verify/Z3QRE87FZKIG",
   },
   {
     title: "The Bits and Bytes of Computer Networking",
