@@ -1,3 +1,9 @@
+/** A course inside a multi-course program certificate. */
+export interface CertificateCourse {
+  title: string;
+  credentialUrl?: string; // per-course verification page
+}
+
 export interface Certificate {
   title: string;
   issuer: string; // platform or awarding body
@@ -6,74 +12,63 @@ export interface Certificate {
   group?: string; // used to cluster related certs (e.g. a specializations)
   inProgress?: boolean;
   credentialUrl?: string; // if present, the card is a link (opens in new tab)
+  /** Set on a program certificate — renders the big card with a course dropdown. */
+  courses?: CertificateCourse[];
 }
 
 // NOTE: `provider` values are best-guess from the standard Coursera catalog.
 // Seif — please confirm/adjust each one before publishing.
 export const certificates: Certificate[] = [
-  // --- Google Data Analytics Professional Certificate (In Progress) ---
+  // --- Program certificate: rendered large, with its courses in a dropdown ---
   {
-    title: "Foundations: Data, Data, Everywhere",
+    title: "Google Data Analytics Professional Certificate",
     issuer: "Coursera",
     provider: "Google",
-    group: "Google Data Analytics Professional Certificate",
-    inProgress: true,
+    date: "2026",
     credentialUrl:
-      "https://www.coursera.org/account/accomplishments/verify/ZIG1AIVZT33U",
-  },
-  {
-    title: "Ask Questions to Make Data-Driven Decisions",
-    issuer: "Coursera",
-    provider: "Google",
-    group: "Google Data Analytics Professional Certificate",
-    inProgress: true,
-    credentialUrl:
-      "https://www.coursera.org/account/accomplishments/verify/0816FXJMVVJP",
-  },
-  {
-    title: "Prepare Data for Exploration",
-    issuer: "Coursera",
-    provider: "Google",
-    group: "Google Data Analytics Professional Certificate",
-    inProgress: true,
-    credentialUrl:
-      "https://www.coursera.org/account/accomplishments/verify/LMYF0QJZJQN2",
-  },
-  {
-    title: "Process Data from Dirty to Clean",
-    issuer: "Coursera",
-    provider: "Google",
-    group: "Google Data Analytics Professional Certificate",
-    inProgress: true,
-    credentialUrl:
-      "https://www.coursera.org/account/accomplishments/verify/HWA2UTK7AFDI",
-  },
-  {
-    title: "Analyze Data to Answer Questions",
-    issuer: "Coursera",
-    provider: "Google",
-    group: "Google Data Analytics Professional Certificate",
-    inProgress: true,
-    credentialUrl:
-      "https://www.coursera.org/account/accomplishments/verify/DLPGA4TGBOZO",
-  },
-  {
-    title: "Share Data Through the Art of Visualization",
-    issuer: "Coursera",
-    provider: "Google",
-    group: "Google Data Analytics Professional Certificate",
-    inProgress: true,
-    credentialUrl:
-      "https://www.coursera.org/account/accomplishments/verify/J67R2VUZQK8F",
-  },
-  {
-    title: "Introduction to Data Analysis Using Python",
-    issuer: "Coursera",
-    provider: "Google",
-    group: "Google Data Analytics Professional Certificate",
-    inProgress: true,
-    credentialUrl:
-      "https://www.coursera.org/account/accomplishments/verify/Z3QRE87FZKIG",
+      "https://www.coursera.org/account/accomplishments/specialization/WNTP75KFHQNI",
+    courses: [
+      {
+        title: "Foundations: Data, Data, Everywhere",
+        credentialUrl:
+          "https://www.coursera.org/account/accomplishments/verify/ZIG1AIVZT33U",
+      },
+      {
+        title: "Ask Questions to Make Data-Driven Decisions",
+        credentialUrl:
+          "https://www.coursera.org/account/accomplishments/verify/0816FXJMVVJP",
+      },
+      {
+        title: "Prepare Data for Exploration",
+        credentialUrl:
+          "https://www.coursera.org/account/accomplishments/verify/LMYF0QJZJQN2",
+      },
+      {
+        title: "Process Data from Dirty to Clean",
+        credentialUrl:
+          "https://www.coursera.org/account/accomplishments/verify/HWA2UTK7AFDI",
+      },
+      {
+        title: "Analyze Data to Answer Questions",
+        credentialUrl:
+          "https://www.coursera.org/account/accomplishments/verify/DLPGA4TGBOZO",
+      },
+      {
+        title: "Share Data Through the Art of Visualization",
+        credentialUrl:
+          "https://www.coursera.org/account/accomplishments/verify/J67R2VUZQK8F",
+      },
+      {
+        title: "Introduction to Data Analysis Using Python",
+        credentialUrl:
+          "https://www.coursera.org/account/accomplishments/verify/Z3QRE87FZKIG",
+      },
+      {
+        title: "Google Data Analytics Capstone: Complete a Case Study",
+        credentialUrl:
+          "https://www.coursera.org/account/accomplishments/verify/9G4K39WRJJ74",
+      },
+    ],
   },
 
   // --- Standalone certificates ---

@@ -1,4 +1,5 @@
 import { certificates, type Certificate } from "@/data/certificates";
+import ProgramCertCard from "@/components/ProgramCertCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 import { cn, isRealUrl } from "@/lib/utils";
@@ -62,10 +63,10 @@ function CertCard({ cert }: { cert: Certificate }) {
   );
 }
 
-/** Certifications — in-progress specialization grouped, then verified certs. */
+/** Certifications — program certificates first, then the standalone ones. */
 export default function Certifications() {
-  const inProgress = certificates.filter((c) => c.inProgress);
-  const completed = certificates.filter((c) => !c.inProgress);
+  const programs = certificates.filter((c) => c.courses?.length);
+  const standalone = certificates.filter((c) => !c.courses?.length);
 
   return (
     <section
@@ -81,30 +82,24 @@ export default function Certifications() {
           />
         </Reveal>
 
-        {inProgress.length > 0 ? (
-          <div className="mt-12">
-            <Reveal className="flex items-center gap-3">
-              <h3 className="font-mono text-sm text-blueprint">In progress</h3>
-              <span className="rounded-full border border-blueprint/40 px-2 py-0.5 font-mono text-[0.65rem] uppercase tracking-wider text-blueprint">
-                {inProgress[0].group}
-              </span>
-            </Reveal>
-            <StaggerGroup className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {inProgress.map((cert) => (
-                <StaggerItem key={cert.title} className="h-full">
-                  <CertCard cert={cert} />
-                </StaggerItem>
-              ))}
-            </StaggerGroup>
-          </div>
+        {programs.length > 0 ? (
+          <StaggerGroup className="mt-12 space-y-4">
+            {programs.map((cert) => (
+              <StaggerItem key={cert.title}>
+                <ProgramCertCard cert={cert} />
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
         ) : null}
 
         <div className="mt-12">
           <Reveal>
-            <h3 className="font-mono text-sm text-blueprint">Completed</h3>
+            <h3 className="font-mono text-sm text-blueprint">
+              Individual courses
+            </h3>
           </Reveal>
           <StaggerGroup className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {completed.map((cert) => (
+            {standalone.map((cert) => (
               <StaggerItem key={cert.title} className="h-full">
                 <CertCard cert={cert} />
               </StaggerItem>
