@@ -26,7 +26,7 @@ export interface Experience {
 export const experience: Experience[] = [
   {
     company: "ANMAT",
-    role: "Software Engineering Intern (On-Site)",
+    role: "Software Engineer Intern (On-Site)",
     location: "Cairo, Egypt · Egypt branch",
     period: "Sep 2026 – Present",
     type: "work",
@@ -57,7 +57,7 @@ export const experience: Experience[] = [
   },
   {
     company: "CIB (Commercial International Bank)",
-    role: "Summer Intern (Remote)",
+    role: "Data Security Intern (Remote)",
     location: "Remote",
     period: "Aug 2024",
     type: "work",
