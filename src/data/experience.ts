@@ -66,7 +66,10 @@ export const experience: Experience[] = [
     website: "https://www.cibeg.com/",
     summary:
       'One-month remote summer internship in CIB\'s "Emerging Talent for the Future Workplace" program.',
-    highlights: [],
+    highlights: [
+      "Studied how a major bank protects customer data and core banking systems against cyberattacks",
+      "Examined common attack vectors and the security controls, system hardening, and architectural safeguards that prevent intrusion and reduce breach risk",
+    ],
   },
   {
     company: "RobEn",
