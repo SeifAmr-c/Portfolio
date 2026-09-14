@@ -34,8 +34,10 @@ export const experience: Experience[] = [
     website: "https://anmat.sa/",
     summary:
       "On-site software engineering internship at the Egypt branch of ANMAT, a Saudi-headquartered technology group.",
-    // TODO: add highlights once there's concrete work to describe.
-    highlights: [],
+    highlights: [
+      "Contribute to software development within the technology division of a regional IT and consulting group serving enterprise and government clients",
+      "Build and maintain application features across the front-end and back-end stack, and collaborate with cross-border engineering and business teams to translate requirements into delivered features",
+    ],
   },
   {
     company: "Fenger Gruppe",
