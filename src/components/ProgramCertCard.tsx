@@ -39,7 +39,7 @@ const ChevronIcon = ({ open }: { open: boolean }) => (
 
 /**
  * Program certificate — the headline card. Clicking it expands the list of
- * courses it's made of, each linking to its own verification page.
+ * courses it's made of (a course row links out only if it has a credentialUrl).
  *
  * The panel opens with the grid-rows 0fr→1fr trick rather than a JS height
  * animation, so the global prefers-reduced-motion guard in globals.css

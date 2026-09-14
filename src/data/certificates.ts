@@ -28,46 +28,15 @@ export const certificates: Certificate[] = [
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/specialization/WNTP75KFHQNI",
     courses: [
-      {
-        title: "Foundations: Data, Data, Everywhere",
-        credentialUrl:
-          "https://www.coursera.org/account/accomplishments/verify/ZIG1AIVZT33U",
-      },
-      {
-        title: "Ask Questions to Make Data-Driven Decisions",
-        credentialUrl:
-          "https://www.coursera.org/account/accomplishments/verify/0816FXJMVVJP",
-      },
-      {
-        title: "Prepare Data for Exploration",
-        credentialUrl:
-          "https://www.coursera.org/account/accomplishments/verify/LMYF0QJZJQN2",
-      },
-      {
-        title: "Process Data from Dirty to Clean",
-        credentialUrl:
-          "https://www.coursera.org/account/accomplishments/verify/HWA2UTK7AFDI",
-      },
-      {
-        title: "Analyze Data to Answer Questions",
-        credentialUrl:
-          "https://www.coursera.org/account/accomplishments/verify/DLPGA4TGBOZO",
-      },
-      {
-        title: "Share Data Through the Art of Visualization",
-        credentialUrl:
-          "https://www.coursera.org/account/accomplishments/verify/J67R2VUZQK8F",
-      },
-      {
-        title: "Introduction to Data Analysis Using Python",
-        credentialUrl:
-          "https://www.coursera.org/account/accomplishments/verify/Z3QRE87FZKIG",
-      },
-      {
-        title: "Google Data Analytics Capstone: Complete a Case Study",
-        credentialUrl:
-          "https://www.coursera.org/account/accomplishments/verify/9G4K39WRJJ74",
-      },
+      { title: "Foundations: Data, Data, Everywhere" },
+      { title: "Ask Questions to Make Data-Driven Decisions" },
+      { title: "Prepare Data for Exploration" },
+      { title: "Process Data from Dirty to Clean" },
+      { title: "Analyze Data to Answer Questions" },
+      { title: "Share Data Through the Art of Visualization" },
+      { title: "Introduction to Data Analysis Using Python" },
+      { title: "Google Data Analytics Capstone: Complete a Case Study" },
+      { title: "Accelerate Your Job Search with AI" },
     ],
   },
 

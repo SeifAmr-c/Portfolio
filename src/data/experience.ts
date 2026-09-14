@@ -37,6 +37,8 @@ export const experience: Experience[] = [
     highlights: [
       "Contribute to software development within the technology division of a regional IT and consulting group serving enterprise and government clients",
       "Build and maintain application features across the front-end and back-end stack, and collaborate with cross-border engineering and business teams to translate requirements into delivered features",
+      "Design and write T-SQL stored procedures in Microsoft SQL Server (SSMS) that serve as the data layer for application back-end services",
+      "Partner with the front-end team to turn database output into clear, intuitive interfaces that end users can easily understand and act on",
     ],
   },
   {
