@@ -1,5 +1,6 @@
 import type { StaticImageData } from "next/image";
 import type { LogoTone } from "@/components/ui/LogoMark";
+import bitcoinLogo from "@/assets/logos/bitcoin.png";
 import repsayLogo from "@/assets/logos/repsay.png";
 import takhleesLogo from "@/assets/logos/takhlees.png";
 
@@ -22,8 +23,8 @@ export interface Project {
   logo?: StaticImageData;
   /**
    * How the mark sits in its tile. RepSay's mark is already bright, so it sits
-   * on the surface unplated; Takhlees' black container mark takes the default
-   * light plate.
+   * on the surface unplated; Takhlees' container mark and the Bitcoin ₿ take
+   * the default light plate.
    */
   logoTone?: LogoTone;
   links: ProjectLink[];
@@ -67,6 +68,7 @@ export const projects: Project[] = [
     description:
       "A machine-learning model predicting Bitcoin prices from historical minute-level data. Implemented and compared Random Forest and Gradient Boosting, with data cleaning, feature engineering, and model evaluation — applying time-series analysis and predictive modeling.",
     stack: ["Python", "Pandas", "NumPy", "Scikit-learn"],
+    logo: bitcoinLogo,
     links: [
       { label: "Repo", url: "https://github.com/SeifAmr-c/Bitcoin" },
     ],

@@ -1,5 +1,6 @@
 import { certificates, type Certificate } from "@/data/certificates";
 import ProgramCertCard from "@/components/ProgramCertCard";
+import LogoMark from "@/components/ui/LogoMark";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/ui/Reveal";
 import { cn, isRealUrl } from "@/lib/utils";
@@ -28,13 +29,18 @@ function CertCard({ cert }: { cert: Certificate }) {
   const inner = (
     <>
       <div className="flex items-start justify-between gap-3">
-        <h4 className="font-medium leading-snug text-paper">{cert.title}</h4>
+        <LogoMark
+          src={cert.logo}
+          name={cert.provider ?? cert.issuer}
+          tone={cert.logoTone}
+        />
         {href ? (
-          <span className="mt-0.5 flex-none text-muted transition-colors group-hover/cert:text-accent">
+          <span className="mt-1 flex-none text-muted transition-colors group-hover/cert:text-accent">
             <VerifyIcon />
           </span>
         ) : null}
       </div>
+      <h4 className="mt-4 font-medium leading-snug text-paper">{cert.title}</h4>
       <p className="mt-2 font-mono text-xs text-muted">{meta}</p>
       {href ? (
         <p className="mt-3 font-mono text-xs text-blueprint">

@@ -1,3 +1,11 @@
+import type { StaticImageData } from "next/image";
+import type { LogoTone } from "@/components/ui/LogoMark";
+import dukeLogo from "@/assets/logos/duke.png";
+import googleLogo from "@/assets/logos/google.png";
+import gucLogo from "@/assets/logos/guc.png";
+import ibmLogo from "@/assets/logos/ibm.png";
+import michiganLogo from "@/assets/logos/michigan.png";
+
 /** A course inside a multi-course program certificate. */
 export interface CertificateCourse {
   title: string;
@@ -12,6 +20,10 @@ export interface Certificate {
   group?: string; // used to cluster related certs (e.g. a specializations)
   inProgress?: boolean;
   credentialUrl?: string; // if present, the card is a link (opens in new tab)
+  /** Issuing institution mark — omit and the card falls back to a monogram. */
+  logo?: StaticImageData;
+  /** How the mark sits in its tile; defaults to a light plate. */
+  logoTone?: LogoTone;
   /** Set on a program certificate — renders the big card with a course dropdown. */
   courses?: CertificateCourse[];
 }
@@ -24,6 +36,7 @@ export const certificates: Certificate[] = [
     title: "Google Data Analytics Professional Certificate",
     issuer: "Coursera",
     provider: "Google",
+    logo: googleLogo,
     date: "2026",
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/specialization/WNTP75KFHQNI",
@@ -45,6 +58,8 @@ export const certificates: Certificate[] = [
     title: "Programming for Everybody (Getting Started with Python)",
     issuer: "Coursera",
     provider: "University of Michigan",
+    logo: michiganLogo,
+    logoTone: "bleed",
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/3PWNIUHXKJDS",
   },
@@ -52,6 +67,8 @@ export const certificates: Certificate[] = [
     title: "Python Data Structures",
     issuer: "Coursera",
     provider: "University of Michigan",
+    logo: michiganLogo,
+    logoTone: "bleed",
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/J4M23G29USWZ",
   },
@@ -59,6 +76,8 @@ export const certificates: Certificate[] = [
     title: "Using Python to Access Web Data",
     issuer: "Coursera",
     provider: "University of Michigan",
+    logo: michiganLogo,
+    logoTone: "bleed",
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/B8W1T0PI49MK",
   },
@@ -66,6 +85,7 @@ export const certificates: Certificate[] = [
     title: "Python for Data Science, AI & Development",
     issuer: "Coursera",
     provider: "IBM",
+    logo: ibmLogo,
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/LPNEKHX0MU5G",
   },
@@ -73,6 +93,7 @@ export const certificates: Certificate[] = [
     title: "What is Data Science?",
     issuer: "Coursera",
     provider: "IBM",
+    logo: ibmLogo,
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/LQ1CZUQM8OHH",
   },
@@ -80,6 +101,7 @@ export const certificates: Certificate[] = [
     title: "Tools for Data Science",
     issuer: "Coursera",
     provider: "IBM",
+    logo: ibmLogo,
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/H5Q3OITIWO4P",
   },
@@ -87,6 +109,7 @@ export const certificates: Certificate[] = [
     title: "Data Science Methodology",
     issuer: "Coursera",
     provider: "IBM",
+    logo: ibmLogo,
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/C0JJKFJDRD5R",
   },
@@ -94,6 +117,7 @@ export const certificates: Certificate[] = [
     title: "Excel Basics for Data Analysis",
     issuer: "Coursera",
     provider: "IBM",
+    logo: ibmLogo,
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/PGALMWN1XE4D",
   },
@@ -101,6 +125,7 @@ export const certificates: Certificate[] = [
     title: "Data Science Math Skills",
     issuer: "Coursera",
     provider: "Duke University",
+    logo: dukeLogo,
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/LTJFR2IOQLHU",
   },
@@ -108,6 +133,7 @@ export const certificates: Certificate[] = [
     title: "The Bits and Bytes of Computer Networking",
     issuer: "Coursera",
     provider: "Google",
+    logo: googleLogo,
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/verify/TXST1PXW9YJ0",
   },
@@ -116,6 +142,8 @@ export const certificates: Certificate[] = [
   {
     title: "German — A1 Language Certificate",
     issuer: "CEFR level A1",
+    provider: "German University in Cairo",
+    logo: gucLogo,
     credentialUrl:
       "https://drive.google.com/file/d/1AlG7oSglLxoDJU3TTsX9UYj1Agyl1N2v/view?usp=sharing",
   },

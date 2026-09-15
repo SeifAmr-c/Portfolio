@@ -2,6 +2,7 @@
 
 import { useId, useState } from "react";
 import type { Certificate } from "@/data/certificates";
+import LogoMark from "@/components/ui/LogoMark";
 import { cn, isRealUrl } from "@/lib/utils";
 
 const ExternalIcon = ({ className }: { className?: string }) => (
@@ -57,10 +58,17 @@ export default function ProgramCertCard({ cert }: { cert: Certificate }) {
     <div className="rounded-xl border border-accent/40 bg-surface/50 p-6 transition-colors duration-300 hover:border-accent/70 sm:p-7">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-accent/50 px-2.5 py-0.5 font-mono text-[0.65rem] uppercase tracking-wider text-accent">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            Professional certificate
-          </span>
+          <div className="flex items-center gap-3">
+            <LogoMark
+              src={cert.logo}
+              name={cert.provider ?? cert.issuer}
+              tone={cert.logoTone}
+            />
+            <span className="inline-flex items-center gap-2 rounded-full border border-accent/50 px-2.5 py-0.5 font-mono text-[0.65rem] uppercase tracking-wider text-accent">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              Professional certificate
+            </span>
+          </div>
           <h4 className="mt-3 font-display text-xl leading-snug text-paper sm:text-2xl">
             {cert.title}
           </h4>
