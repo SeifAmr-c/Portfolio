@@ -29,6 +29,12 @@ export const site = {
     { label: "App Store — RepSay", url: "https://apps.apple.com/eg/app/repsay/id6759207937" },
   ],
 
+  // Microsoft Clarity project (clarity.microsoft.com) — visitor sessions & duration.
+  // Public by design (it ships in the page). Only loads in production builds.
+  analytics: {
+    clarityId: "z8fcuncb38",
+  },
+
   resumePath: "/resume.pdf", // Seif drops MyResume.pdf into /public as resume.pdf
 
   // --- Design tokens (mirror these into globals.css as CSS variables) ---

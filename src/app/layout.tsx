@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { site } from "@/data/site";
 import SmoothScroll from "@/components/SmoothScroll";
+import Analytics from "@/components/Analytics";
 import "./globals.css";
 
 const inter = Inter({
@@ -85,6 +86,7 @@ export default function RootLayout({
           }}
         />
         <SmoothScroll>{children}</SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );

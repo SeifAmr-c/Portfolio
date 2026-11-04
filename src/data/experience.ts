@@ -28,17 +28,17 @@ export const experience: Experience[] = [
     company: "ANMAT",
     role: "Software Engineer Intern (On-Site)",
     location: "Cairo, Egypt · Egypt branch",
-    period: "Sep 2026 – Present",
+    period: "Sep 2026",
     type: "work",
     logo: anmatLogo,
     website: "https://anmat.sa/",
     summary:
-      "On-site software engineering internship at the Egypt branch of ANMAT, a Saudi-headquartered technology group.",
+      "One-month on-site software engineering internship at the Egypt branch of ANMAT, a Saudi-headquartered technology group.",
     highlights: [
-      "Contribute to software development within the technology division of a regional IT and consulting group serving enterprise and government clients",
-      "Build and maintain application features across the front-end and back-end stack, and collaborate with cross-border engineering and business teams to translate requirements into delivered features",
-      "Design and write T-SQL stored procedures in Microsoft SQL Server (SSMS) that serve as the data layer for application back-end services",
-      "Partner with the front-end team to turn database output into clear, intuitive interfaces that end users can easily understand and act on",
+      "Contributed to software development within the technology division of a regional IT and consulting group serving enterprise and government clients",
+      "Built and maintained application features across the front-end and back-end stack, and collaborated with cross-border engineering and business teams to translate requirements into delivered features",
+      "Designed and wrote T-SQL stored procedures in Microsoft SQL Server (SSMS) that serve as the data layer for application back-end services",
+      "Partnered with the front-end team to turn database output into clear, intuitive interfaces that end users can easily understand and act on",
     ],
   },
   {
