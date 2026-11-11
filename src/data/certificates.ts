@@ -4,7 +4,9 @@ import dukeLogo from "@/assets/logos/duke.png";
 import googleLogo from "@/assets/logos/google.png";
 import gucLogo from "@/assets/logos/guc.png";
 import ibmLogo from "@/assets/logos/ibm.png";
+import metaLogo from "@/assets/logos/meta.png";
 import michiganLogo from "@/assets/logos/michigan.png";
+import microsoftLogo from "@/assets/logos/microsoft.png";
 
 /** A course inside a multi-course program certificate. */
 export interface CertificateCourse {
@@ -54,6 +56,30 @@ export const certificates: Certificate[] = [
   },
 
   // --- Standalone certificates ---
+  {
+    title: "Harnessing the Power of Data with Power BI",
+    issuer: "Coursera",
+    provider: "Microsoft",
+    logo: microsoftLogo,
+    credentialUrl:
+      "https://www.coursera.org/account/accomplishments/verify/I8QLUCUANF69",
+  },
+  {
+    title: "Preparing Data for Analysis with Microsoft Excel",
+    issuer: "Coursera",
+    provider: "Microsoft",
+    logo: microsoftLogo,
+    credentialUrl:
+      "https://www.coursera.org/account/accomplishments/verify/WNXMT45L2FVG",
+  },
+  {
+    title: "Introduction to Back-End Development",
+    issuer: "Coursera",
+    provider: "Meta",
+    logo: metaLogo,
+    credentialUrl:
+      "https://www.coursera.org/account/accomplishments/verify/Y8VABOOBWPYI",
+  },
   {
     title: "Programming for Everybody (Getting Started with Python)",
     issuer: "Coursera",
